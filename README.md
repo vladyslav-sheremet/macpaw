@@ -1,5 +1,11 @@
 # macpaw
 
+It is my pet-project where I concentrated on main features of Vue 3 and clean code
+
+### Technologies used in the project:
+1. VUE 3 (Options API)
+2. SCSS
+
 ## Project setup
 ```
 npm install
@@ -10,15 +16,4 @@ npm install
 npm run serve
 ```
 
-### Compiles and minifies for production
-```
-npm run build
-```
 
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
