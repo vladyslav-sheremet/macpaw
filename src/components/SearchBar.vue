@@ -1,36 +1,25 @@
 <template>
     <div class="search-wrapper">
       <button class="menu-button" type="button" @click="$emit('mode', 'default')">
-        <svg width="30" height="30">
-          <use xlink:href="@/assets/sprite.svg#menu"></use>
-        </svg>
+        <svg-component id="menu" width="30" height="30" />
       </button>
 
         <form @submit.prevent>
           <input type="text" placeholder="Search for breeds by name" v-model.trim="query">
           <button type="submit" @click="searchQuery">
-            <svg width="20" height="20">
-              <use xlink:href="@/assets/sprite.svg#search"></use>
-            </svg>
+            <svg-component id="search" width="20" height="20" />
           </button>
         </form>
 
       <div class="inner-wrapper">
         <button type="button" @click="$emit('mode', 'likes')">
-          <svg width="30" height="30">
-            <use xlink:href="@/assets/sprite.svg#smile"></use>
-          </svg>
-<!--                <svg-component id="smile" height="30" width="30" />-->
+          <svg-component id="smile" width="30" height="30" />
         </button>
         <button type="button" @click="$emit('mode', 'favourites')">
-          <svg width="30" height="26">
-            <use xlink:href="@/assets/sprite.svg#heart"></use>
-          </svg>
+          <svg-component id="heart" width="30" height="26" />
         </button>
         <button type="button" @click="$emit('mode', 'dislikes')">
-          <svg width="30" height="30">
-            <use xlink:href="@/assets/sprite.svg#sad"></use>
-          </svg>
+          <svg-component id="sad" width="30" height="30" />
         </button>
       </div>
 
@@ -38,8 +27,6 @@
 </template>
 
 <script>
-// import SvgComponent from "@/components/SvgComponent.vue";
-
 export default {
   name: 'SearchBar',
   emits: {
@@ -52,7 +39,6 @@ export default {
       required: true
     }
   },
-  // components: {SvgComponent},
   data() {
     return {
       query: ''

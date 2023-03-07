@@ -12,19 +12,13 @@
       <img v-else :src="imageUrl" alt="cat">
       <div class="buttons-wrapper">
         <button type="button" @click="vote(1)">
-          <svg width="30" height="30">
-            <use xlink:href="@/assets/sprite.svg#smile"></use>
-          </svg>
+          <svg-component id="smile" width="30" height="30" />
         </button>
         <button type="button" @click="addToFavourites()">
-          <svg width="30" height="26">
-            <use xlink:href="@/assets/sprite.svg#heart"></use>
-          </svg>
+          <svg-component id="heart" width="30" height="26" />
         </button>
         <button type="button" @click="vote(-1)">
-          <svg width="30" height="30">
-            <use xlink:href="@/assets/sprite.svg#sad"></use>
-          </svg>
+          <svg-component id="sad" width="30" height="30" />
         </button>
       </div>
       <div class="action-log" v-for="log in actionLogs" :key="log.id">
@@ -34,15 +28,9 @@
             <p>{{log.time}}</p>
             <p class="text-desktop">Image ID: <span>{{log.id}}</span> was added to {{log.text}}</p>
           </div>
-          <svg class="like" v-if="log.text === 'Likes'" width="20" height="17">
-            <use xlink:href="@/assets/sprite.svg#smile"></use>
-          </svg>
-          <svg class="dislike" v-else-if="log.text === 'Dislikes'" width="20" height="17">
-            <use xlink:href="@/assets/sprite.svg#sad"></use>
-          </svg>
-          <svg class="favourite" v-else width="20" height="17">
-            <use xlink:href="@/assets/sprite.svg#heart"></use>
-          </svg>
+          <svg-component class="like" v-if="log.text === 'Likes'" id="smile" width="20" height="17" />
+          <svg-component class="dislike" v-else-if="log.text === 'Dislikes'" id="sad" width="20" height="17" />
+          <svg-component class="favourite" v-else id="heart" width="20" height="17" />
         </div>
 
         <p class="text-mobile">Image ID: <span>{{log.id}}</span> was added to {{log.text}}</p>
@@ -145,7 +133,7 @@ button {
 img {
   width: 100%;
   border-radius: $large;
-  height: 360px;
+  max-height: 500px;
 }
 
 .buttons-wrapper {

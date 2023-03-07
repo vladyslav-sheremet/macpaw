@@ -53,9 +53,7 @@
             </select>
           </div>
           <button type="button" @click="reloadImages">
-            <svg width="16" height="16">
-              <use xlink:href="@/assets/sprite.svg#reload"></use>
-            </svg>
+            <svg-component id="reload" width="16" height="16" />
           </button>
         </div>
 

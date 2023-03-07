@@ -22,14 +22,10 @@
             <option value="10">Limit: 10</option>
           </select>
           <button type="button" @click="isSortDown = false">
-            <svg width="12" height="20">
-              <use xlink:href="@/assets/sprite.svg#sort-up"></use>
-            </svg>
+            <svg-component id="sort-up" width="12" height="20" />
           </button>
           <button type="button" @click="isSortDown = true">
-            <svg width="12" height="20">
-              <use xlink:href="@/assets/sprite.svg#sort-down"></use>
-            </svg>
+            <svg-component id="sort-down" width="12" height="20" />
           </button>
         </div>
 
@@ -37,8 +33,7 @@
       <loader-component v-if="isLoading" />
       <div v-else class="images-wrapper">
         <div v-for="breed in filteredBreeds" :key="breed.name" @click="selectBreed(breed.id)">
-<!--          <img :src="`https://cdn2.thecatapi.com/images/${breed.reference_image_id}.jpg`" alt="cat">-->
-          <img :src="breed.imageUrl ? breed.imageUrl : require('@/assets/cat.jpeg')" alt="cat">
+          <img :src="`https://cdn2.thecatapi.com/images/${breed.reference_image_id}.jpg`" alt="cat" @error="imageLoadOnError">
           <a href="#"><span>{{breed.name}}</span></a>
         </div>
 
@@ -78,9 +73,6 @@ export default {
   async created() {
     await this.fetchBreeds()
 
-    for (const item of this.breeds) {
-      item.imageUrl = await this.getImage(item.reference_image_id)
-    }
     this.isLoading = false
   },
   watch: {
@@ -119,6 +111,9 @@ export default {
     selectBreed(id) {
       this.$emit('mode', 'selectedBreed')
       this.$emit('breedId', id)
+    },
+    imageLoadOnError(e) {
+      e.target.src = require('@/assets/cat.jpeg')
     }
   }
 }

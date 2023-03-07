@@ -1,9 +1,7 @@
 <template>
   <div class="wrapper">
     <a href="#">
-      <svg width="106" height="24">
-        <use xlink:href="@/assets/sprite.svg#logo"></use>
-      </svg>
+      <svg-component id="logo" width="106" height="24" />
     </a>
     <div>
       <p>Hi intern!</p>
